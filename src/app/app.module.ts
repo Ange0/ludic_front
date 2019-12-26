@@ -15,6 +15,7 @@ import { RoomsComponent } from './components/rooms/rooms.component';
 import { StorageProductComponent } from './components/storage-product/storage-product.component';
 import { RepportsComponent } from './components/repports/repports.component';
 import { FooterComponent } from './components/_partials/footer/footer.component';
+import { LoadingSpinnerComponent } from './components/loaders/loading-spinner/loading-spinner.component';
 
 
 
@@ -36,7 +37,8 @@ import { FooterComponent } from './components/_partials/footer/footer.component'
     RepportsComponent,
     FooterComponent,
     HeaderBottomComponent,
-    HeaderTopComponent
+    HeaderTopComponent,
+    LoadingSpinnerComponent
     
   ],
   imports: [

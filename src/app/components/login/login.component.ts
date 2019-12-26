@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
     
 })
 export class LoginComponent implements OnInit {
-
+  showSpinner: boolean = false;
   constructor(private _as:AuthService,private router:Router,private cookie:CookieService) { }
 
   ngOnInit() {
@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
       });
     }else{
       this._as.signIn(email,password).subscribe((datas)=>{
+         this.showSpinner=true;
           if(datas['token']){
         //   console.info("Informations compatible");
         //   Swal.fire({
@@ -68,7 +69,7 @@ export class LoginComponent implements OnInit {
         //      footer: '<a href>Why do I have this issue?</a>'
         //    });
         const dtExpire = new Date();
-        dtExpire.setTime(dtExpire.getTime() + 3600 * 1000);
+        dtExpire.setTime(dtExpire.getTime() + (3600 * 1000)*2);
         // setCookie('user', usercode, dtExpire, '/', '', '');
 				// 	setCookie('level', level, dtExpire, '/', '', '');
 				// 	setCookie('token', token, dtExpire, '/', '', '');
@@ -80,11 +81,13 @@ export class LoginComponent implements OnInit {
         this.cookie.set('level',datas['level']),dtExpire;
         this.cookie.set('room',datas['room'],dtExpire);
         alert(this.cookie.get('code'));
+        this.showSpinner=false;
         this.router.navigateByUrl('dashboard');
          //window.location='dashboard'; // a GERER aprés
           //this.router.navigate(['dashboard']);
         }else{
           console.error("information erronées ");
+          this.showSpinner=false;
           Swal.fire({
             icon: 'warning',
             backdrop: `
