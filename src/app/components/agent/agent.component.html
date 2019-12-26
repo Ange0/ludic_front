@@ -1,0 +1,115 @@
+<div class="horizontal-menu">
+  <app-header-top></app-header-top>
+  <app-header-bottom></app-header-bottom>
+</div>
+<div class="container-fluid page-body-wrapper">
+  <div class="main-panel">
+     <div class="content-wrapper">
+       <div class="row">
+          <div class="col-lg-7 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Liste des agents</h4>
+                  <p class="card-description">
+                    Add class <code>.table-hover</code>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <th>Product</th>
+                          <th>Sale</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Jacob</td>
+                          <td>Photoshop</td>
+                          <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
+                          <td><label class="badge badge-danger">Pending</label></td>
+                        </tr>
+                        <tr>
+                          <td>Messsy</td>
+                          <td>Flash</td>
+                          <td class="text-danger"> 21.06% <i class="mdi mdi-arrow-down"></i></td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Premier</td>
+                          <td class="text-danger"> 35.00% <i class="mdi mdi-arrow-down"></i></td>
+                          <td><label class="badge badge-info">Fixed</label></td>
+                        </tr>
+                        <tr>
+                          <td>Peter</td>
+                          <td>After effects</td>
+                          <td class="text-success"> 82.00% <i class="mdi mdi-arrow-up"></i></td>
+                          <td><label class="badge badge-success">Completed</label></td>
+                        </tr>
+                        <tr>
+                          <td>Dave</td>
+                          <td>53275535</td>
+                          <td class="text-success"> 98.05% <i class="mdi mdi-arrow-up"></i></td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-5 grid-margin stretch-card">
+              <div class="card">
+                  <div class="card-body">
+                    
+                    <h4 class="card-title"><i class="mdi mdi-account-multiple-plus  menu-icon icon-lg"></i> Agent</h4>
+                    <form class="forms-sample" (submit)="onAddAgent($event)">
+                      <div class="form-group row">
+                        <label for="matAgent" class="col-sm-3 col-form-label">Matricule *</label>
+                        <div class="col-sm-9">
+                          <input type="text" required class="form-control" id="matAgent" placeholder="Ex :123456789X">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="nameAgent" class="col-sm-3 col-form-label">Nom *</label>
+                        <div class="col-sm-9">
+                          <input type="text" required class="form-control" id="nameAgent" placeholder="Ex : Jean Le blanc">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="dateNaissAgent" class="col-sm-3 col-form-label">date Naiss *</label>
+                        <div class="col-sm-9">
+                          <input required type="date" class="form-control" id="dateNaissAgent">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="jobAgent" class="col-sm-3 col-form-label">Fonction </label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="jobAgent" placeholder="Ex : Informaticien">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="telAgent" class="col-sm-3 col-form-label">Téléphone *</label>
+                        <div class="col-sm-9">
+                          <input required type="tel" class="form-control" id="telAgent" placeholder="Ex : 08080909">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="emailAgent" class="col-sm-3 col-form-label">E-mail </label>
+                        <div class="col-sm-9">
+                          <input  type="email" class="form-control" id="emailAgent" placeholder="Ex : monemail@gmail.com">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+                      <button class="btn btn-danger">Effacer</button>
+                    </form>
+                  </div>
+                </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+
