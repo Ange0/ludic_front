@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     const email=target.querySelector('#useremail').value;
     //recuperation du password
     const password=target.querySelector('#userpassword').value;
+    this.showSpinner=true;
     if(email==""|| password==""){
       Swal.fire({
         icon: 'error',
@@ -57,9 +58,10 @@ export class LoginComponent implements OnInit {
         text: 'Informations manquantes ',
         footer: '<a href>Veuillez remplir correctement les champs</a>'
       });
+      this.showSpinner=false;
     }else{
       this._as.signIn(email,password).subscribe((datas)=>{
-         this.showSpinner=true;
+        
           if(datas['token']){
         //   console.info("Informations compatible");
         //   Swal.fire({
@@ -87,7 +89,7 @@ export class LoginComponent implements OnInit {
           //this.router.navigate(['dashboard']);
         }else{
           console.error("information erronées ");
-          this.showSpinner=false;
+          
           Swal.fire({
             icon: 'warning',
             backdrop: `
@@ -100,6 +102,7 @@ export class LoginComponent implements OnInit {
             text: 'L\'utilisateur est introuvable',
             footer: '<a href>Veuillez contacter votre administrateur</a>'
           });
+          this.showSpinner=false;
         }
         //this.title="";
         //this.formSubmitted=false; 
