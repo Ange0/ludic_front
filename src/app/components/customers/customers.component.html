@@ -1,0 +1,154 @@
+<div class="horizontal-menu">
+  <app-header-top></app-header-top>
+  <app-header-bottom></app-header-bottom>
+</div>
+<div class="container-fluid page-body-wrapper">
+  <div class="main-panel">
+     <div class="content-wrapper">
+       <div class="row">
+          <div class="col-lg-7 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Liste des clients</h4>
+                  <p class="card-description">
+                    Add class <code>.table-hover</code>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <th>Product</th>
+                          <th>Sale</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Jacob</td>
+                          <td>Photoshop</td>
+                          <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
+                          <td><label class="badge badge-danger">Pending</label></td>
+                        </tr>
+                        <tr>
+                          <td>Messsy</td>
+                          <td>Flash</td>
+                          <td class="text-danger"> 21.06% <i class="mdi mdi-arrow-down"></i></td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Premier</td>
+                          <td class="text-danger"> 35.00% <i class="mdi mdi-arrow-down"></i></td>
+                          <td><label class="badge badge-info">Fixed</label></td>
+                        </tr>
+                        <tr>
+                          <td>Peter</td>
+                          <td>After effects</td>
+                          <td class="text-success"> 82.00% <i class="mdi mdi-arrow-up"></i></td>
+                          <td><label class="badge badge-success">Completed</label></td>
+                        </tr>
+                        <tr>
+                          <td>Dave</td>
+                          <td>53275535</td>
+                          <td class="text-success"> 98.05% <i class="mdi mdi-arrow-up"></i></td>
+                          <td><label class="badge badge-warning">In progress</label></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-5 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title"><i class="mdi mdi-account-multiple-plus  menu-icon icon-lg"></i> Client</h4>
+                  <form class="forms-sample" (submit)="onAddCustomer($event)">
+                    <div class="form-group row">
+                      <label for="nameCustomer" class="col-sm-3 col-form-label">Nom *</label>
+                      <div class="col-sm-9">
+                        <input type="text" required class="form-control" id="nameCustomer" placeholder="Ex : Jean Le blanc">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="roomCustomer" class="col-sm-3 col-form-label">Salle</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" style="color:black" name="" id="nameRoom">
+                            <option value="" selected></option>
+                            <option *ngFor="let room of rooms " [value]="room.room_code">{{room.room_name}}</option>
+                        </select>
+                      </div>
+                    </div>
+                   
+                    <div class="form-group row">
+                      <label for="dateNaissCustomer" class="col-sm-3 col-form-label">Date Naiss *</label>
+                      <div class="col-sm-9">
+                        <input required type="date" class="form-control" id="dateNaissCustomer">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="nationCustomer" class="col-sm-3 col-form-label">Nation</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nationCustomer" placeholder="Ex : Informaticien">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="phoneCustomer" class="col-sm-3 col-form-label">Téléphone *</label>
+                      <div class="col-sm-9">
+                        <input required type="tel" class="form-control" id="phoneCustomer" placeholder="Ex : 08080909">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="emailCustomer" class="col-sm-3 col-form-label">E-mail </label>
+                      <div class="col-sm-9">
+                        <input  type="email" class="form-control" id="emailCustomer" placeholder="Ex : ">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="genderCustomer" class="col-sm-3 col-form-label">genre </label>
+                      <div class="col-sm-9">
+                        <input  type="text" class="form-control" id="genderCustomer" placeholder="Ex : ">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="typeCustomer" class="col-sm-3 col-form-label">type </label>
+                      <div class="col-sm-9">
+                        <input  type="text" class="form-control" id="typeCustomer" placeholder="Ex : Special">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="drinkCustomer" class="col-sm-3 col-form-label">Boisson</label>
+                      <div class="col-sm-9">
+                          <input type="text" id="drinkCustomer" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="dietCustomer" class="col-sm-3 col-form-label">Diet</label>
+                      <div class="col-sm-9">
+                          <input type="text" id="dietCustomer" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="dietCustomer" class="col-sm-3 col-form-label">Diet</label>
+                      <div class="col-sm-9">
+                          <input type="text" id="dietCustomer" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="smokeCustomer" class="col-sm-3 col-form-label">Droguerie</label>
+                      <div class="col-sm-9">
+                          <input type="text" id="smokeCustomer" class="form-control" />
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+                    <button class="btn btn-danger">Effacer</button>
+                  </form>
+                </div>
+              </div>
+        </div>
+       </div>
+    </div>
+ </div>
+</div>

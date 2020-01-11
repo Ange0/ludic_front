@@ -1,0 +1,103 @@
+<div class="horizontal-menu">
+  <app-header-top></app-header-top>
+  <app-header-bottom></app-header-bottom>
+</div>
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+       <div class="content-wrapper">
+        <div class="row" style="margin-bottom: 20px;">
+          <div class="col-md-12">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="search">
+                  <i class="mdi mdi-magnify"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="Rechercher une salle" aria-label="search" aria-describedby="search">
+          </div>
+          </div>
+        </div>
+         <div class="row">
+            <div class="col-lg-7 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <app-loading-spinner  *ngIf="showSpinner"></app-loading-spinner>   
+                    <div *ngIf="rooms.length==0"><h2 style="text-align: center;">{{msgRoom}}</h2></div>             
+                    <div *ngIf="rooms.length!=0">
+                      <h4 class="card-title">Liste des salles</h4>
+                        <p class="card-description">
+                          Nombre de salle <code> {{nbrRoom}}</code>
+                        </p>
+                    </div>
+                    <ul class="list-group mt-4">
+                      <li class="list-group-item" *ngFor='let room of rooms'>
+                        <app-room-item (sendRequestToData)="onDeleteRooms($event)" [room]="room"></app-room-item>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-5 grid-margin stretch-card">
+              <div class="card">
+                  <div class="card-body">
+                    
+                    <h4 class="card-title"><i class="mdi mdi-domain menu-icon icon-lg"></i> Salle </h4>
+                    <form class="forms-sample" (submit)="onAddRoom($event)">
+                      <div class="form-group row">
+                        <label for="roomName" class="col-sm-3 col-form-label">Nom *</label>
+                        <div class="col-sm-9">
+                          <input type="text" required class="form-control" required id="roomName" placeholder="Ex :Zae">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="roomType" class="col-sm-3 col-form-label">Type *</label>
+                        <div class="col-sm-9">
+                          <select required class="form-control" style="color:black" name="" id="roomType">
+                              <option value="" selected></option>
+                              <option value="prestige">Prestige</option>
+                              <option value="etoiles">Etoile</option>
+                              <option value="simple">Simple</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="roomTown" class="col-sm-3 col-form-label">Ville</label>
+                        <div class="col-sm-9">
+                          <input type="text" required class="form-control" id="roomTown" placeholder="Ex : Abidjan">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="roomCity" class="col-sm-3 col-form-label">Quartier *</label>
+                        <div class="col-sm-9">
+                          <input required type="text" placeholder="EX: Cocody" class="form-control" id="roomCity">
+                        </div>
+                      </div>
+                     
+                      <div class="form-group row">
+                        <label for="roomAdrr" class="col-sm-3 col-form-label">Adresse</label>
+                        <div class="col-sm-9">
+                          <input required type="tel" class="form-control" id="roomAdrr" placeholder="Ex : Cocody Palmerai">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="roomPhone" class="col-sm-3 col-form-label">TEL</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="roomPhone" placeholder="Ex : 08080202">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="roomEmail" class="col-sm-3 col-form-label">E-mail </label>
+                        <div class="col-sm-9">
+                          <input  type="email" class="form-control" id="roomEmail" placeholder="Ex : monemail@gmail.com">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+                      <button class="btn btn-danger">Effacer</button>
+                    </form>
+                  </div>
+                </div>
+          </div>
+         </div>
+      </div>
+   </div>
+  </div>

@@ -1,0 +1,106 @@
+<div class="horizontal-menu">
+  <app-header-top></app-header-top>
+  <app-header-bottom></app-header-bottom>
+</div>
+<div class="container-fluid page-body-wrapper">
+  <div class="main-panel">
+     <div class="content-wrapper">
+       <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="search">
+                    <i class="mdi mdi-magnify"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Rechercher un agent" aria-label="search" aria-describedby="search">
+            </div>
+            </div>
+       </div>
+       <div class="row">
+         <!-- <div>
+           <h2 style="text-align: center;">Chargement...</h2>
+           
+         </div> -->
+          <div class="col-lg-7 ">
+              <div class="card">
+           
+                <div class="card-body">
+                  <app-loading-spinner  *ngIf="showSpinner"></app-loading-spinner>
+                  <div *ngIf="agents.length==0"><h2 style="text-align: center;">{{msgAgent}}</h2></div> 
+                    <div *ngIf="agents.length!=0">
+                      <h4 class="card-title">Liste des agents</h4>
+                        <p class="card-description">
+                          Nombre des agents <code>: {{nbrAgent}}</code>
+                        </p>
+                    </div>
+                  <ul class="list-group mt-4">
+                    <li class="list-group-item" *ngFor='let agent of agents'>
+                      <app-agent-item (sendRequestToData)="onDeleteAgent($event)" [agent]="agent"></app-agent-item>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-5 grid-margin stretch-card">
+              <div class="card">
+                  <div class="card-body">
+                    
+                    <h4 class="card-title"><i class="mdi mdi-account-multiple-plus  menu-icon icon-lg"></i> Agent</h4>
+                    <form class="forms-sample" (submit)="onAddAgent($event)">
+                      <div class="form-group row">
+                        <label for="matAgent" class="col-sm-3 col-form-label">Matricule *</label>
+                        <div class="col-sm-9">
+                          <input type="text" required class="form-control" id="matAgent" placeholder="Ex :123456789X">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="roomAgent" class="col-sm-3 col-form-label">Salle</label>
+                        <div class="col-sm-9">
+                          <select class="form-control" style="color:black" name="" id="nameRoom">
+                              <option value="" selected></option>
+                              <option *ngFor="let room of rooms " [value]="room.room_code">{{room.room_name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="nameAgent" class="col-sm-3 col-form-label">Nom *</label>
+                        <div class="col-sm-9">
+                          <input type="text" required class="form-control" id="nameAgent" placeholder="Ex : Jean Le blanc">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="dateNaissAgent" class="col-sm-3 col-form-label">date Naiss *</label>
+                        <div class="col-sm-9">
+                          <input required type="date" class="form-control" id="dateNaissAgent">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="jobAgent" class="col-sm-3 col-form-label">Fonction </label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="jobAgent" placeholder="Ex : Informaticien">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="telAgent" class="col-sm-3 col-form-label">Téléphone *</label>
+                        <div class="col-sm-9">
+                          <input required type="tel" class="form-control" id="telAgent" placeholder="Ex : 08080909">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="emailAgent" class="col-sm-3 col-form-label">E-mail </label>
+                        <div class="col-sm-9">
+                          <input  type="email" class="form-control" id="emailAgent" placeholder="Ex : monemail@gmail.com">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+                      <button class="btn btn-danger">Effacer</button>
+                    </form>
+                  </div>
+                </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+
