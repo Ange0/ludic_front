@@ -1,14 +1,22 @@
 export class Customer{
-    room_id:string;
-    room_code:string;
-    room_name:string;
-    room_type:string;
-    room_city:string;
-    room_town:string;
-    room_addr:string;
-    room_phone:string;
-    room_email:string;
-    room_status:string
-      constructor(title){
-      }
+    cust_id:string;
+    cust_code:string;
+    cust_name:string;
+    cust_gender:string;
+    cust_datebirth:string;
+    cust_nation:string;
+    cust_phone:string;
+    cust_email:string;
+    cust_type:string;
+    cust_regime:string;
+    cust_smoke:string;
+    cust_drink:string;
+    cust_room:string;
+    cust_gain:string;
+    cust_deposit:string;
+    cust_status:string;
+    cust_active:string;
+    cust_active_room:string;
+    cust_date_creat:string;
+    user_name:string;
  }

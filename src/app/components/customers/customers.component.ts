@@ -27,7 +27,7 @@ export class CustomersComponent implements OnInit {
   ngOnInit() {
     
     this.getAllRooms();
-   // this.getAllCustomers();
+    this.getAllCustomers();
   }
 
   getAllRooms(){
@@ -115,7 +115,7 @@ export class CustomersComponent implements OnInit {
       }
     })
   }
-  /*
+
   onDeleteCustomer(datas){
     Swal.fire({
       title: 'Etes vous sûre?',
@@ -128,7 +128,7 @@ export class CustomersComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         
-        this._ags.delCustomer(datas['customerCode']).subscribe(
+        this._cs.delCustomer(datas['customerCode']).subscribe(
            (response:any)=>{
             if(response['status']){ // status=true
               
@@ -165,7 +165,6 @@ export class CustomersComponent implements OnInit {
       }
     })
   }
-*/
 
 /*
   onUpdateCustomer(datas){
@@ -174,10 +173,10 @@ export class CustomersComponent implements OnInit {
   }
   */
 
-  /*
+
   getAllCustomers(){
     this.showSpinner=true;
-    this._ags.getAllCustomers().subscribe(
+    this._cs.getAllCustomers().subscribe(
       (response)=>{
         console.log(response);
        if(response['status']){
@@ -187,20 +186,20 @@ export class CustomersComponent implements OnInit {
        }else{
         this.customers=[];
         this.showSpinner=false;
-        this.msgCustomer="Aucun Customer trouvé !";
+        this.msgCustomer="Aucun Client trouvé !";
        }
        this.showSpinner=false;
-       this.msgCustomer="Aucun Customer trouvé !";
+       this.msgCustomer="Aucun Client trouvé !";
       },
       (error:any)=>{
         this.showSpinner=false;
-        this.msgCustomer="Aucun Customer trouvé !";
+        this.msgCustomer="Aucun Client trouvé !";
         console.log('error');
       }
     )
     
   }
-  */
+  
   
 
 }

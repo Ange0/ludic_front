@@ -1,3 +1,5 @@
+import { CustomerItemComponent } from './components/customers/customer-item/customer-item.component';
+
 import { AgentService } from './services/agent.service';
 import { HeaderTopComponent } from './components/_partials/header-top/header-top.component';
 import { HeaderBottomComponent } from './components/_partials/header-bottom/header-bottom.component';
@@ -29,6 +31,7 @@ import { UsersComponent } from './components/users/users.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +49,8 @@ import { UsersComponent } from './components/users/users.component';
     LoadingSpinnerComponent,
     AgentItemComponent,
     RoomItemComponent,
-    UsersComponent
+    UsersComponent,
+    CustomerItemComponent
     
   ],
   imports: [
