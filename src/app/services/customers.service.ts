@@ -31,7 +31,7 @@ export class CustomerService {
    delCustomer(PcodeCustomer:string):Observable<any[]>{
     console.info(this.cookie.get('code')+" "+ this.cookie.get('room'));
      var reqHeaders= new HttpHeaders({'Content-Type': 'application/json','Authorization': ' Bearer ' +this.cookie.get('token')});
-     return this.http.put<any[]>(this.url+"deleteCustomer",{usercode:this.cookie.get('code'),agentcode:PcodeCustomer},{headers:reqHeaders});
+     return this.http.put<any[]>(this.url+"updateCustomerStatus",{usercode:this.cookie.get('code'),custcode:PcodeCustomer,status:105},{headers:reqHeaders});
    }
 
 }

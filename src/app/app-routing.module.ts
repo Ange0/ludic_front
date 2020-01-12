@@ -1,3 +1,4 @@
+import { UsersComponent } from './components/users/users.component';
 import { RepportsComponent } from './components/repports/repports.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { CustomersComponent } from './components/customers/customers.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', component:DashboardComponent},
   { path: 'my-account', component:MyAccountComponent },
   { path: 'agents', component:AgentComponent },
+  { path: 'users', component:UsersComponent },
   { path: 'customers', component:CustomersComponent},
   { path: 'rooms', component:RoomsComponent},
   { path: 'storage-products', component:StorageProductComponent},

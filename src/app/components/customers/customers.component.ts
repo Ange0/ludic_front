@@ -134,7 +134,7 @@ export class CustomersComponent implements OnInit {
               
               Swal.fire(
                 'Supprimé',
-                'L\'customer a été supprimé.',
+                'Le client a été supprimé.',
                 'success'
               )
               this.showSpinnerForAddCustomer=false;
