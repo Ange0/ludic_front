@@ -82,9 +82,8 @@ export class LoginComponent implements OnInit {
         this.cookie.set('route',datas['route'],dtExpire);
         this.cookie.set('level',datas['level']),dtExpire;
         this.cookie.set('room',datas['room'],dtExpire);
-        alert(this.cookie.get('code'));
         this.showSpinner=false;
-        this.router.navigateByUrl('dashboard');
+        this.router.navigateByUrl('agents');
          //window.location='dashboard'; // a GERER aprés
           //this.router.navigate(['dashboard']);
         }else{
