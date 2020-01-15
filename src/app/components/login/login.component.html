@@ -12,7 +12,7 @@
               
               <form (submit)="onSignIn($event)" class="pt-3">
                
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="exampleInputEmail">E-mail</label>
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">
@@ -20,20 +20,19 @@
                         <i class="mdi mdi-account-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="email"  type="text" name="useremail" id="useremail" class="form-control form-control-lg border-left-0"  placeholder="Ex : monmail@gmail.com">
+                    <input type="email"  type="text" name="useremail"  class="form-control form-control-lg border-left-0"  placeholder="Ex : monmail@gmail.com">
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword">Mot de passe</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend bg-transparent">
-                      <span class="input-group-text bg-transparent border-right-0">
-                        <i class="mdi mdi-lock-outline text-primary"></i>
-                      </span>
-                    </div>
-                    <input type="password"  name="userpassword" id="userpassword" class="form-control form-control-lg border-left-0"  placeholder="Ex : monmotdepasse">                        
-                  </div>
-                </div>
+                </div> -->
+
+                <mat-form-field class="col-md-12">
+                  <input matInput id="useremail" placeholder="E-mail" [formControl]="email" required>
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-12">
+                  <input matInput  id="userpassword" placeholder="mot de passe" [type]="hide ? 'password' : 'text'">
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
                 <div class="my-2 d-flex justify-content-between align-items-center">
                    <!-- <div class="form-check">
                     <label class="form-check-label text-muted">
@@ -47,7 +46,7 @@
                   <!-- <a href="#" class="auth-link text-black">Se connecter</a> -->
                 </div>
                 <div class="my-3">
-                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Se connecter</button>
+                  <button type="submit" mat-raised-button color="primary" class="btn btn-block">Se connecter</button>
                 </div>
                 <!-- <div class="mb-2 d-flex">
                   <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
@@ -64,8 +63,10 @@
             </div>
           </div>
           <div class="col-lg-6 login-half-bg d-flex flex-row justify-content-center align-items-center">
-             <h4 class="text-white text-justify display-4">
-               Lydia Ludic est la marque leader de Jeux & Loisirs en Afrique de l’Ouest. Nos Espaces de Jeux et de Loisirs offrent un divertissement de qualité, dont vous profiterez en toute convivialité.
+             
+             <h4 class="text-white text-justify display-4" style="margin:10px;">
+               <h2 style="font-size: 2.8em;" class="h2">Lydia Ludic</h2> 
+               la marque leader de Jeux & Loisirs en Afrique de l’Ouest. Nos Espaces de Jeux et de Loisirs offrent un divertissement de qualité, dont vous profiterez en toute convivialité.
                Rejoignez-nous pour vous amuser et vous détendre !
               </h4>
             <!-- <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2018  All rights reserved.</p> -->

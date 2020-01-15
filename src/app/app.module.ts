@@ -1,3 +1,4 @@
+
 import { AgentModalComponent } from './components/agent/agent-modal/agent-modal.component';
 import { CustomerItemComponent } from './components/customers/customer-item/customer-item.component';
 import { HeaderTopComponent } from './components/_partials/header-top/header-top.component';
@@ -30,7 +31,7 @@ import {MatInputModule} from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatDateFormats, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 
 
 
@@ -38,6 +39,18 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 
 
+
+export const MY_FORMAT: MatDateFormats = {
+  parse: {
+  dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+  dateInput: 'DD/MM/YYYY',
+  monthYearLabel: 'MMM YYYY',
+  dateA11yLabel: 'DD/MM/YYYY',
+  monthYearA11yLabel: 'MMMM YYYY',
+  },
+  };
 
 
 
@@ -83,6 +96,8 @@ import { MatNativeDateModule } from '@angular/material/core';
   providers: [
     Title,
     CookieService,
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+   {provide: MAT_DATE_FORMATS, useValue: MY_FORMAT }
   ],
   bootstrap: [AppComponent]
 })

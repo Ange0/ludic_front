@@ -1,3 +1,4 @@
+import { FormControl, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
 import { AuthService } from './../../services/auth.service';
@@ -11,10 +12,21 @@ import { Router } from '@angular/router';
     
 })
 export class LoginComponent implements OnInit {
+
+  hide = true; // externe
+  email = new FormControl('', [Validators.required, Validators.email]); //externe
   showSpinner: boolean = false;
   constructor(private _as:AuthService,private router:Router,private cookie:CookieService) { }
 
   ngOnInit() {
+  }
+
+  
+
+  getErrorMessage() { //externe
+    return this.email.hasError('required') ? 'Veuillez remplir ce champ' :
+        this.email.hasError('email') ? 'mail incorrecte' :
+            '';
   }
    // A la soumission du formulaire
   //  login(e){

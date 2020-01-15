@@ -22,7 +22,7 @@ export class AuthService {
    }
   signIn(Pemail:string,Ppassword:string):Observable<any[]>
   {
-    return this.http.post<any[]>("http://localhost/w-stock-mini/index.php/auth/login",{agentemail:Pemail,agentpass:Ppassword});
+    return this.http.post<any[]>("http://ludic.wikeotel.com/index.php/auth/login",{agentemail:Pemail,agentpass:Ppassword});
   }
 
 }

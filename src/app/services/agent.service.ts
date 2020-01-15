@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AgentService {
-  url:string="http://localhost/w-stock-mini/index.php/agent/";
+  url:string="http://ludic.wikeotel.com/index.php/agent/";
   constructor(private cookie:CookieService,private http:HttpClient) { }
   
   addAgent(PmatAgent:string,PnameRoom:string,PnameAgent:string,PdateNaissAgent:string,PjobAgent:string,PtelAgent:string,PemailAgent:string):Observable<any[]>{

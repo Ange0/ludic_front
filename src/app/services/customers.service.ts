@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CustomerService {
-  url:string="http://localhost/w-stock-mini/index.php/customer/";
+  url:string="http://ludic.wikeotel.com/index.php/customer/";
   constructor(private cookie:CookieService,private http:HttpClient) { }
   
   addCustomer(PnameCustomer:string,PdateNaissCustomer:string,PnationCustomer:string,PnameRoom:string,PtelCustomer:string,PgenderCustomer:string,PtypeCustomer,PdietCustomer,PsmokeCustomer,PdrinkCustomer):Observable<any[]>{

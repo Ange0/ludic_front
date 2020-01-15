@@ -48,49 +48,48 @@
                   <div class="card-body">
                     
                     <h4 class="card-title"><i class="mdi mdi-account-multiple-plus  menu-icon icon-lg"></i> Agent</h4>
-                    <form class="forms-sample" (submit)="onAddAgent($event)">
+                    <form class="forms-sample"  [formGroup]="profileFormAgent" (ngSubmit)="onAddAgent()">
 
                      <div class="row">
                           <mat-form-field class="col-md-6">
-                            <input type="text" matInput  placeholder="Matricule" id="matAgent"/>
+                            <input type="text" required matInput  placeholder="matricule" formControlName="matAgent"/>
                         </mat-form-field>
             
                         <mat-form-field class="col-md-6">
-                              <input type="text" matInput class="form-control" id="nameAgent" placeholder="Nom">
+                              <input type="text" required matInput class="form-control" formControlName="nameAgent" placeholder="nom">
                       </mat-form-field>
                      </div>
                       <div class="row">
                         <mat-form-field class="col-md-6">
                           <mat-label>Salle</mat-label>
-                          <mat-select id="nameRoom">
+                          <mat-select formControlName="nameRoom" required>
+                            <mat-option selected></mat-option>
                             <mat-option *ngFor="let room of rooms " [value]="room.room_code">{{room.room_name}}</mat-option>
                           </mat-select>
                         </mat-form-field>
                         
                          <mat-form-field class="col-md-6">
-                              <input type="text"  matInput  class="form-control" id="jobAgent" placeholder="Fonction">
+                              <input type="text"  matInput  class="form-control" formControlName="jobAgent" placeholder="fonction">
                         </mat-form-field>
                       </div>
                       <div class="row">
                         <mat-form-field class="col-md-3">
-                          <input matInput  id="dateNaissAgent" [matDatepicker]="picker" placeholder="Date Naissance">
+                          <input matInput required  formControlName="dateNaissAgent" [matDatepicker]="picker" placeholder="date Naissance">
                               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                               <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
 
                         <mat-form-field class="col-md-3">
-                          <input type="text"  matInput  class="form-control" id="telAgent" placeholder="Telephone">
+                          <input type="text" required  matInput  class="form-control" formControlName="telAgent" placeholder="telephone">
                        </mat-form-field>
 
                         <mat-form-field class="col-md-6">
-                          <input  type="email"   matInput class="form-control" id="emailAgent" placeholder="E-mail">
+                          <input  type="email"   matInput class="form-control" formControlName="emailAgent" placeholder="e-mail">
                        </mat-form-field>
                       </div>
-                   
-
                       <!-- <button  mat-primary-button class="btn btn-primary mr-2">Enregistrer</button> -->
                       <button type="submit"  mat-raised-button color="primary">Enregistrer</button> &nbsp;
-                      <button class="btn btn-danger">Effacer</button>
+                      <button type="reset" mat-raised-button  color="warn">Effacer</button>
                     </form>
                   </div>
                 </div>
