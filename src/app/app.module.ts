@@ -22,6 +22,7 @@ import { AgentItemComponent } from './components/agent/agent-item/agent-item.com
 import { RoomItemComponent } from './components/rooms/room-item/room-item.component';
 import { UsersComponent } from './components/users/users.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -57,6 +58,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgbModule
   ],
   providers: [

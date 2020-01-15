@@ -1,7 +1,7 @@
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Agent } from './../../../Models/Agents';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-agent-item',
@@ -13,12 +13,32 @@ export class AgentItemComponent implements OnInit {
   @Output() sendRequestToData=new EventEmitter(); // emmetteur d'evenement
   closeResult: string;
   setNameAgent:string;
-  nameAgent:string;
 
-  constructor(private modalService: NgbModal) {}
+  //nameAgent= new FormControl('');
+  //nameAgent:string;
+  formGroup:FormGroup;
+
+  constructor(private modalService: NgbModal,private formBuilder:FormBuilder) {}
 
   ngOnInit() {
+   
+  }
 
+  profileFormAgent = new FormGroup({
+    nameAgent: new FormControl(''),
+    
+  });
+
+  updateProfile() {
+
+    this.profileFormAgent.patchValue({
+      nameAgent: this.agent.agt_name,
+    });
+  }
+
+  onSubmitForUpdate(){
+    const formsValues=this.formGroup.value;
+    console.info(formsValues['agentName']);
   }
   sendToEventForDeleteAgent(){ // envoie de l'emmetteur
     this.sendRequestToData.emit(
@@ -27,12 +47,15 @@ export class AgentItemComponent implements OnInit {
   }
 
   openModal(content) {
-   
-    console.log(this.agent.agt_name);
+    //this.nameAgent.setValue(this.agent.agt_name);
+    this.updateProfile();
     this.modalService.open(content,{ariaLabelledBy: 'modal-basic-title',size: 'lg'})
     .result.then((result) => {
-      this.setNameAgent=this.nameAgent;
-      console.log(this.setNameAgent);
+      //alert(this.);
+     // this.setNameAgent=this.nameAgent;
+     //this.nameAgent.setValue(this.agent.agt_name);
+      console.log(result);
+      console.log(this.profileFormAgent.value['nameAgent']);
       this.closeResult = `Closed with: ${result}`;
     },
      (reason) => {
