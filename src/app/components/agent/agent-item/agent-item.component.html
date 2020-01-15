@@ -8,45 +8,32 @@
   <div class="modal-body">
     <form [formGroup]="profileFormAgent">
       <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="form-group">
-              <label for="dateOfBirth">Nom</label>
+              <label for="dateOfBirth">Matricule</label>
               <div class="input-group">
-                <input class="form-control"  id="nameAgent"  formControlName="nameAgent" />
-               
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="dateOfBirth">Nom</label>
-              <div class="input-group">
-                <input id="dateOfBirth" class="form-control">
-               
+                <input class="form-control"  id="matAgent"  formControlName="matAgent" />
               </div>
             </div>
           </div>
       </div>
-      <!-- <div class="row">
+      <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="dateOfBirth">Date of birth</label>
+            <label for="nameAgent">Nom</label>
             <div class="input-group">
-              <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-              </div>
+              <input class="form-control" formControlName="nameAgent"/>
             </div>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
-            <label for="dateOfBirth">Nom</label>
-            <div class="input-group">
-              <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-              </div>
+          <div class="form-group row">
+            <label for="roomAgent"  class="col-sm-3 col-form-label">Salle</label>
+            <div style="margin-top: 10px;" class="col-sm-9">
+              <select class="form-control form-control-lg" style="color:black" formControlName="roomAgent">
+                  <option selected></option>
+                  <option *ngFor="let room of rooms " [ngValue]="room.room_code">{{room.room_name}}</option>
+              </select>
             </div>
           </div>
         </div>
@@ -54,23 +41,17 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="dateOfBirth">Date of birth</label>
+            <label for="birthAgent">Date Naiss</label>
             <div class="input-group">
-              <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-              </div>
+              <input   formControlName="birthAgent"  id="birthAgent"  class="form-control"  />
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="dateOfBirth">Nom</label>
+            <label for="jobAgent">Fonction</label>
             <div class="input-group">
-              <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-              </div>
+              <input id="jobAgent" formControlName="jobAgent"  class="form-control">
             </div>
           </div>
         </div>
@@ -78,32 +59,25 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
+          <label for="dateOfBirth">Téléphone</label>
           <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-            </div>
+            <input id="phoneAgent" formControlName="phoneAgent" class="form-control">
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="dateOfBirth">Nom</label>
+          <label for="dateOfBirth">E-mail</label>
           <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-            </div>
+            <input id="emailAgent" class="form-control" formControlName="emailAgent">
           </div>
         </div>
       </div>
-    </div> -->
-    <button type="hidden" class="btn btn-outline-dark">Miettre A jour</button>
+    </div> 
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark btn-block" (click)="modal.close('Save click')">Mettre à jour</button>
   </div>
 </ng-template>
 {{agent.agt_name}}

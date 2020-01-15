@@ -5,7 +5,7 @@ export class Agent{
    agt_name:string;
    agt_date_birth:string;
    agt_job:string;
-   agt_phne:string;
+   agt_phone:string;
    agt_email:string;
    agt_date_creat:string;
    agt_room:string

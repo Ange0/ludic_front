@@ -1,3 +1,4 @@
+import { Room } from './../../../Models/Rooms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Agent } from './../../../Models/Agents';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
@@ -10,10 +11,12 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 })
 export class AgentItemComponent implements OnInit {
   @Input() agent:Agent; 
+  @Input() rooms:Room[]=[];
+
   @Output() sendRequestToData=new EventEmitter(); // emmetteur d'evenement
   closeResult: string;
   setNameAgent:string;
-
+  
   //nameAgent= new FormControl('');
   //nameAgent:string;
   formGroup:FormGroup;
@@ -21,18 +24,35 @@ export class AgentItemComponent implements OnInit {
   constructor(private modalService: NgbModal,private formBuilder:FormBuilder) {}
 
   ngOnInit() {
-   
+    console.log(this.rooms);
   }
 
+  //-----------------------------------------------
+
+          // CREATION DU FORMULAIRE AVEC FORMGROUP
+
+  //---------------------------------------------
   profileFormAgent = new FormGroup({
+    matAgent:new FormControl(''),
     nameAgent: new FormControl(''),
+    roomAgent:new FormControl(''),
+    birthAgent:new FormControl(''),
+    jobAgent:new FormControl(''),
+    phoneAgent: new FormControl(''),
+    emailAgent:new FormControl('')
     
   });
 
-  updateProfile() {
+  updateProfileAgent() {
 
     this.profileFormAgent.patchValue({
+      matAgent:this.agent.agt_mat,
       nameAgent: this.agent.agt_name,
+      roomAgent:this.agent.agt_room,
+      birthAgent:this.agent.agt_date_birth,
+      jobAgent:this.agent.agt_job,
+      phoneAgent:this.agent.agt_phone,
+      emailAgent:this.agent.agt_email,
     });
   }
 
@@ -44,16 +64,17 @@ export class AgentItemComponent implements OnInit {
     this.sendRequestToData.emit(
       {'agentCode':this.agent.agt_code,'agentName':this.agent.agt_name}
     );
-  }
+  } 
+
+//----------------------------------------------------------------------------
+          //OUVERTURE MODALE POUR MODIFIER LES INFORMATION DE L'AGENT
+//-----------------------------------------------------------------------------
 
   openModal(content) {
-    //this.nameAgent.setValue(this.agent.agt_name);
-    this.updateProfile();
+  
+    this.updateProfileAgent();
     this.modalService.open(content,{ariaLabelledBy: 'modal-basic-title',size: 'lg'})
     .result.then((result) => {
-      //alert(this.);
-     // this.setNameAgent=this.nameAgent;
-     //this.nameAgent.setValue(this.agent.agt_name);
       console.log(result);
       console.log(this.profileFormAgent.value['nameAgent']);
       this.closeResult = `Closed with: ${result}`;

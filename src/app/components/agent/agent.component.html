@@ -23,7 +23,7 @@
            <h2 style="text-align: center;">Chargement...</h2>
            
          </div> -->
-          <div class="col-lg-7 ">
+          <div class="col-lg-6 ">
               <div class="card">
            
                 <div class="card-body">
@@ -37,64 +37,59 @@
                     </div>
                   <ul class="list-group mt-4">
                     <li class="list-group-item" *ngFor='let agent of agents'>
-                      <app-agent-item (sendRequestToData)="onDeleteAgent($event)" [agent]="agent"></app-agent-item>
+                      <app-agent-item [rooms]="rooms" (sendRequestToData)="onDeleteAgent($event)" [agent]="agent"></app-agent-item>
                     </li>
                   </ul>
                 </div>
               </div>
           </div>
-          <div class="col-lg-5 grid-margin stretch-card">
+          <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                   <div class="card-body">
                     
                     <h4 class="card-title"><i class="mdi mdi-account-multiple-plus  menu-icon icon-lg"></i> Agent</h4>
                     <form class="forms-sample" (submit)="onAddAgent($event)">
-                      <div class="form-group row">
-                        <label for="matAgent" class="col-sm-3 col-form-label">Matricule *</label>
-                        <div class="col-sm-9">
-                          <input type="text" required class="form-control" id="matAgent" placeholder="Ex :123456789X">
-                        </div>
+
+                     <div class="row">
+                          <mat-form-field class="col-md-6">
+                            <input type="text" matInput  placeholder="Matricule" id="matAgent"/>
+                        </mat-form-field>
+            
+                        <mat-form-field class="col-md-6">
+                              <input type="text" matInput class="form-control" id="nameAgent" placeholder="Nom">
+                      </mat-form-field>
+                     </div>
+                      <div class="row">
+                        <mat-form-field class="col-md-6">
+                          <mat-label>Salle</mat-label>
+                          <mat-select id="nameRoom">
+                            <mat-option *ngFor="let room of rooms " [value]="room.room_code">{{room.room_name}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        
+                         <mat-form-field class="col-md-6">
+                              <input type="text"  matInput  class="form-control" id="jobAgent" placeholder="Fonction">
+                        </mat-form-field>
                       </div>
-                      <div class="form-group row">
-                        <label for="roomAgent" class="col-sm-3 col-form-label">Salle</label>
-                        <div class="col-sm-9">
-                          <select class="form-control" style="color:black" name="" id="nameRoom">
-                              <option value="" selected></option>
-                              <option *ngFor="let room of rooms " [value]="room.room_code">{{room.room_name}}</option>
-                          </select>
-                        </div>
+                      <div class="row">
+                        <mat-form-field class="col-md-3">
+                          <input matInput  id="dateNaissAgent" [matDatepicker]="picker" placeholder="Date Naissance">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-3">
+                          <input type="text"  matInput  class="form-control" id="telAgent" placeholder="Telephone">
+                       </mat-form-field>
+
+                        <mat-form-field class="col-md-6">
+                          <input  type="email"   matInput class="form-control" id="emailAgent" placeholder="E-mail">
+                       </mat-form-field>
                       </div>
-                      <div class="form-group row">
-                        <label for="nameAgent" class="col-sm-3 col-form-label">Nom *</label>
-                        <div class="col-sm-9">
-                          <input type="text" required class="form-control" id="nameAgent" placeholder="Ex : Jean Le blanc">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="dateNaissAgent" class="col-sm-3 col-form-label">date Naiss *</label>
-                        <div class="col-sm-9">
-                          <input required type="date" class="form-control" id="dateNaissAgent">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="jobAgent" class="col-sm-3 col-form-label">Fonction </label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="jobAgent" placeholder="Ex : Informaticien">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="telAgent" class="col-sm-3 col-form-label">Téléphone *</label>
-                        <div class="col-sm-9">
-                          <input required type="tel" class="form-control" id="telAgent" placeholder="Ex : 08080909">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="emailAgent" class="col-sm-3 col-form-label">E-mail </label>
-                        <div class="col-sm-9">
-                          <input  type="email" class="form-control" id="emailAgent" placeholder="Ex : monemail@gmail.com">
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+                   
+
+                      <!-- <button  mat-primary-button class="btn btn-primary mr-2">Enregistrer</button> -->
+                      <button type="submit"  mat-raised-button color="primary">Enregistrer</button> &nbsp;
                       <button class="btn btn-danger">Effacer</button>
                     </form>
                   </div>

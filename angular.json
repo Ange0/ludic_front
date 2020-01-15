@@ -25,7 +25,8 @@
             "styles": [
               "./node_modules/myStyles/css/style.css",
               "./node_modules/myStyles/css/materialdesignicons.min.css",
-              "./node_modules/myStyles/css/vendor.bundle.base.css"
+              "./node_modules/myStyles/css/vendor.bundle.base.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": [
               "./node_modules/myStyles/js/jquery.min.js",
