@@ -2,7 +2,7 @@ import { Room } from './../../../Models/Rooms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Agent } from './../../../Models/Agents';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-agent-item',
@@ -12,10 +12,15 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 export class AgentItemComponent implements OnInit {
   @Input() agent:Agent; 
   @Input() rooms:Room[]=[];
+  
 
   @Output() sendRequestToData=new EventEmitter(); // emmetteur d'evenement
+  @Output() sendRequestToDataForUpdate=new EventEmitter();
+  @Output() sendRequestToDataForIn=new EventEmitter();
+  @Output() sendRequestToDataForOut=new EventEmitter();
   closeResult: string;
   setNameAgent:string;
+  dateNaissAgent:string;
   
   //nameAgent= new FormControl('');
   //nameAgent:string;
@@ -24,7 +29,9 @@ export class AgentItemComponent implements OnInit {
   constructor(private modalService: NgbModal,private formBuilder:FormBuilder) {}
 
   ngOnInit() {
+    
     console.log(this.rooms);
+  
   }
 
   //-----------------------------------------------
@@ -33,13 +40,22 @@ export class AgentItemComponent implements OnInit {
 
   //---------------------------------------------
   profileFormAgent = new FormGroup({
-    matAgent:new FormControl(''),
-    nameAgent: new FormControl(''),
+    matAgent:new FormControl('', [
+    Validators.required,
+    Validators.minLength(10),
+    ]),
+    nameAgent: new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      ]),
     roomAgent:new FormControl(''),
-    birthAgent:new FormControl(''),
+    dateNaissAgent:new FormControl('',[
+      Validators.required,
+     
+      ]),
     jobAgent:new FormControl(''),
     phoneAgent: new FormControl(''),
-    emailAgent:new FormControl('')
+    emailAgent:new FormControl(''),
     
   });
 
@@ -49,35 +65,54 @@ export class AgentItemComponent implements OnInit {
       matAgent:this.agent.agt_mat,
       nameAgent: this.agent.agt_name,
       roomAgent:this.agent.agt_room,
-      birthAgent:this.agent.agt_date_birth,
+      dateNaissAgent:this.agent.agt_date_birth,
       jobAgent:this.agent.agt_job,
       phoneAgent:this.agent.agt_phone,
       emailAgent:this.agent.agt_email,
     });
+    console.info(this.profileFormAgent.get('dateNaissAgent').value);
+    this.dateNaissAgent=this.agent.agt_date_birth;
+    
+    
   }
 
-  onSubmitForUpdate(){
-    const formsValues=this.formGroup.value;
-    console.info(formsValues['agentName']);
-  }
+ 
+
   sendToEventForDeleteAgent(){ // envoie de l'emmetteur
     this.sendRequestToData.emit(
-      {'agentCode':this.agent.agt_code,'agentName':this.agent.agt_name}
+      {'codeAgent':this.agent.agt_code,'nameAgent':this.agent.agt_name}
     );
   } 
+
+  sendToEventForInAgent(){ // envoie de l'emmetteur
+    this.sendRequestToDataForIn.emit(
+      {'codeAgent':this.agent.agt_code,'nameAgent':this.agent.agt_name}
+    );
+  } 
+
+  sendToEventForOutAgent(){ // envoie de l'emmetteur
+  this.sendRequestToDataForOut.emit(
+    {'codeAgent':this.agent.agt_code,'nameAgent':this.agent.agt_name}
+  );
+} 
 
 //----------------------------------------------------------------------------
           //OUVERTURE MODALE POUR MODIFIER LES INFORMATION DE L'AGENT
 //-----------------------------------------------------------------------------
 
   openModal(content) {
-  
+   
     this.updateProfileAgent();
-    this.modalService.open(content,{ariaLabelledBy: 'modal-basic-title',size: 'lg'})
+    this.modalService.open(content,{ariaLabelledBy: 'modal-basic-title',})
     .result.then((result) => {
-      console.log(result);
-      console.log(this.profileFormAgent.value['nameAgent']);
       this.closeResult = `Closed with: ${result}`;
+      console.log(result);
+      console.log(this.profileFormAgent.value['matAgent']);
+      console.log(this.jjmmaaaa());
+
+      this.sendRequestToDataForUpdate.emit(
+        {'matAgent':this.profileFormAgent.value['matAgent'],'codeAgent':this.agent.agt_code,'nameAgent':this.profileFormAgent.value['nameAgent'],roomAgent:this.profileFormAgent.value['roomAgent'],dateNaissAgent:this.jjmmaaaa(),jobAgent:this.profileFormAgent.value['jobAgent'],phoneAgent:this.profileFormAgent.value['phoneAgent'],emailAgent:this.profileFormAgent.value['emailAgent']}
+      );
     },
      (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -92,6 +127,13 @@ export class AgentItemComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+  jjmmaaaa(){
+    const Pdate=(this.profileFormAgent.value["dateNaissAgent"]).split('-');
+    const day=Pdate[2];
+    const month=Pdate[1];
+    const year=Pdate[0];
+    return day+"/"+month+"/"+year;
   }
 
 }

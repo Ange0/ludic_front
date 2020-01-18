@@ -1,6 +1,7 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h3 class="modal-title" id="modal-basic-title">Mise à jour <i class="mdi mdi-box-cutter  menu-icon icon-lg"></i><span style="margin-left:100px;font-size:0.6em;color:red"> (NB): date de naissance : {{ dateNaissAgent}} </span>  </h3>
+   
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -8,76 +9,89 @@
   <div class="modal-body">
     <form [formGroup]="profileFormAgent">
       <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="dateOfBirth">Matricule</label>
-              <div class="input-group">
-                <input class="form-control"  id="matAgent"  formControlName="matAgent" />
-              </div>
-            </div>
-          </div>
+        <!-- <mat-form-field class="col-md-6">
+          <input type="text" required matInput  placeholder="matricule" formControlName="matAgent"/>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6">
+            <input type="text" required matInput class="form-control" formControlName="nameAgent" placeholder="nom">
+        </mat-form-field> -->
+
+        <div class="form-group col-md-6">
+            <input type="text" required  class="form-control"  placeholder="matricule" formControlName="matAgent"/>
+        </div>
+        
+        <div class="form-group col-md-6">
+            <input type="text" required  class="form-control" placeholder="nom" formControlName="nameAgent"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <!--  <mat-form-field class="col-md-6" style="z-index: 2;">
+          <mat-label  >Salle</mat-label>
+          <mat-select style="color:grey" formControlName="roomAgent" required>
+            <mat-option selected></mat-option>
+            <mat-option *ngFor="let room of rooms " [value]="room.room_code">{{room.room_name}}</mat-option>
+          </mat-select>
+        </mat-form-field>  -->
+        
+        <div class="form-group  col-md-6" >
+          
+            <select class="form-control " style="color:black" formControlName="roomAgent">
+                <option selected></option>
+                <option *ngFor="let room of rooms " [ngValue]="room.room_code">{{room.room_name}}</option>
+            </select>
+        </div> 
+        
+        <!--  <mat-form-field class="col-md-6">
+              <input type="text"  matInput  class="form-control" formControlName="jobAgent" placeholder="fonction">
+        </mat-form-field> -->
+        <div class="form-group col-md-6">
+            <input type="text" required class="form-control" placeholder="fonction"   formControlName="jobAgent"/>
+        </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="nameAgent">Nom</label>
-            <div class="input-group">
-              <input class="form-control" formControlName="nameAgent"/>
-            </div>
-          </div>
+        <!-- <mat-form-field class="col-md-3">
+          <input matInput required   formControlName="dateNaissAgent"  placeholder="date Naissance">
+              
+        </mat-form-field> -->
+       <!--  <mat-form-field class="col-md-3" style="z-index:1000000 !important">
+          <input matInput required   formControlName="dateNaissAgent" [matDatepicker]="picker" placeholder="date Naissance">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+        <div class="form-group col-md-6">
+            <input type="date"   class="form-control"  formControlName="dateNaissAgent"/>
         </div>
-        <div class="col-md-6">
-          <div class="form-group row">
-            <label for="roomAgent"  class="col-sm-3 col-form-label">Salle</label>
-            <div style="margin-top: 10px;" class="col-sm-9">
-              <select class="form-control form-control-lg" style="color:black" formControlName="roomAgent">
-                  <option selected></option>
-                  <option *ngFor="let room of rooms " [ngValue]="room.room_code">{{room.room_name}}</option>
-              </select>
-            </div>
-          </div>
+       <!--  <mat-form-field class="col-md-3">
+          <input type="text" required  matInput  class="form-control" formControlName="phoneAgent" placeholder="telephone">
+       </mat-form-field> -->
+        <div class="form-group col-md-6">
+          <input type="text" required  placeholder="Tel" class="form-control"  formControlName="phoneAgent"/>
         </div>
       </div>
+      
       <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="birthAgent">Date Naiss</label>
-            <div class="input-group">
-              <input   formControlName="birthAgent"  id="birthAgent"  class="form-control"  />
-            </div>
+          <div class="form-group col-md-12">
+            <input type="text" required placeholder="e-mail"  class="form-control"  formControlName="emailAgent"/>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="jobAgent">Fonction</label>
-            <div class="input-group">
-              <input id="jobAgent" formControlName="jobAgent"  class="form-control">
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="dateOfBirth">Téléphone</label>
-          <div class="input-group">
-            <input id="phoneAgent" formControlName="phoneAgent" class="form-control">
-          </div>
-        </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="dateOfBirth">E-mail</label>
-          <div class="input-group">
-            <input id="emailAgent" class="form-control" formControlName="emailAgent">
-          </div>
-        </div>
-      </div>
-    </div> 
+        <!-- <mat-form-field class="col-md-6">
+          <input  type="email"   matInput class="form-control" formControlName="emailAgent" placeholder="e-mail">
+       </mat-form-field> -->
+      
+       
+        
+
+      
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark btn-block" (click)="modal.close('Save click')">Mettre à jour</button>
+    <!-- <button type="button" class="btn btn-outline-dark btn-block" (click)="modal.close('Save click')">Mettre à jour</button> -->
+     <!-- <button  mat-primary-button class="btn btn-primary mr-2">Enregistrer</button> -->
+     <button type="submit" (click)="modal.close('Save click')"  mat-raised-button [disabled]="profileFormAgent.invalid" color="primary">Mettre à jour</button> &nbsp;
+      
+
   </div>
 </ng-template>
 {{agent.agt_name}}
@@ -85,13 +99,13 @@
 <button style="margin-left: 15px;" (click)="sendToEventForDeleteAgent()" title="Supprimer"  class="float-right btn btn-outline-secondary btn-rounded btn-icon">
   <i class="mdi  mdi-close-circle-outline  text-danger"></i>
   </button>
-  <button  style="margin-left: 15px;" title="Sortie" class="float-right btn btn-outline-warning btn-rounded btn-icon">
+  <button *ngIf="agent.agt_pointer!=0"  (click)="sendToEventForOutAgent()" style="margin-left: 15px;" title="Sortie" class="float-right btn btn-outline-warning btn-rounded btn-icon">
     <i class=" mdi  mdi mdi-clock-out  "></i>
   </button>
   <button  style="margin-left: 15px;" title="Modifier" class="float-right btn btn-info btn-rounded btn-icon "(click)="openModal(content)">
     <i class="mdi  mdi-eye r"></i>
   </button>
-  <button  style="margin-left: 15px;" title="Entrée"  class="float-right btn btn-outline-success btn-rounded btn-icon">
+  <button  *ngIf="agent.agt_pointer==0" (click)="sendToEventForInAgent()" style="margin-left: 15px;" title="Entrée"  class="float-right btn btn-outline-success btn-rounded btn-icon">
     <i class=" mdi mdi mdi-clock-in  "></i>
   </button>
-  <li style="color: rgb(23, 187, 23);margin-left: 10px;margin-right: 10px;" class="float-left"></li>
+  <li *ngIf="agent.agt_pointer!=0"  style="color: rgb(23, 187, 23);margin-left: 10px;margin-right: 10px;" class="float-left"></li>

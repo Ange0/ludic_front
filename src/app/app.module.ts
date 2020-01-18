@@ -31,7 +31,9 @@ import {MatInputModule} from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog'; 
 import { MatNativeDateModule, MatDateFormats, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -91,13 +93,14 @@ export const MY_FORMAT: MatDateFormats = {
     MatFormFieldModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
   ],
   providers: [
     Title,
     CookieService,
-    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-   {provide: MAT_DATE_FORMATS, useValue: MY_FORMAT }
+    DatePipe
+    
   ],
   bootstrap: [AppComponent]
 })

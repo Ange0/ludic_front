@@ -41,9 +41,11 @@
               "./node_modules/myStyles/js/chartjs-plugin-datalabels.js",
               "./node_modules/myStyles/js/raphael.min.js",
               "./node_modules/myStyles/js/justgage.js",
-              "./node_modules/myStyles/js/raphael-2.1.4.min.js",
+              "./node_modules/myStyles/js/raphael-2.1.4.min.js", 
+              "./node_modules/myStyles/js/moveletter.js",
               "./src/assets/js/custome.js",
               "./node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.umd.js"
+
               
             ],
             "es5BrowserSupport": true

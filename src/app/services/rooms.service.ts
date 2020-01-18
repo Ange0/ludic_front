@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RoomsService {
-  url:string="http://ludic.wikeotel.com/index.php/room/";
+  url:string=" http://localhost/w-stock-mini/index.php/room/";
   constructor(private cookie:CookieService,private http:HttpClient) { }
 
 
