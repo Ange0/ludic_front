@@ -79,19 +79,12 @@
         <!-- <mat-form-field class="col-md-6">
           <input  type="email"   matInput class="form-control" formControlName="emailAgent" placeholder="e-mail">
        </mat-form-field> -->
-      
-       
-        
-
-      
-    </form>
+      </form>
   </div>
   <div class="modal-footer">
     <!-- <button type="button" class="btn btn-outline-dark btn-block" (click)="modal.close('Save click')">Mettre à jour</button> -->
      <!-- <button  mat-primary-button class="btn btn-primary mr-2">Enregistrer</button> -->
      <button type="submit" (click)="modal.close('Save click')"  mat-raised-button [disabled]="profileFormAgent.invalid" color="primary">Mettre à jour</button> &nbsp;
-      
-
   </div>
 </ng-template>
 {{agent.agt_name}}

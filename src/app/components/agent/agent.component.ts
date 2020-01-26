@@ -34,7 +34,7 @@ export class AgentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllRooms();
+    this.getAllRoomsForAgent();
     this.getAllAgents();
    
   }
@@ -66,11 +66,37 @@ export class AgentComponent implements OnInit {
       emailAgent:new FormControl('')
       
     });
+
+        //---------------------------------------------
+    profileFormSearchAgent = new FormGroup({
+      searchAgent:new FormControl(''),  
+    });
     
 
+  onSearchAgent(){
+  
+    console.log(this.profileFormSearchAgent.value['searchAgent']);
+    const criteria=this.profileFormSearchAgent.value['searchAgent'];
+    if(criteria!=""){
+      console.info("super!");
+      this._ags.searchAgents(criteria).subscribe(
+        (response)=>{
+            if(response['status']){
+              this.agents=response['data'];
+            }else{
+               this.agents=[];
+            }
+        }
+      )
+
+    }else{
+      console.error("bad");
+      this.getAllAgents();
+    }
+  }
  
   
-  getAllRooms(){
+  getAllRoomsForAgent(){
     this._rs.getAllRooms().subscribe(
       (response)=>{
         if(response['status']){

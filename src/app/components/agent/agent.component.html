@@ -7,15 +7,17 @@
   <div class="main-panel">
      <div class="content-wrapper">
        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-md-12">
+       <div class="col-md-12">
+            <form [formGroup]="profileFormSearchAgent">
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="search">
                     <i class="mdi mdi-magnify"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Rechercher un agent" aria-label="search" aria-describedby="search">
-            </div>
+                 <input type="text" class="form-control" (keyup)="onSearchAgent()" formControlName="searchAgent" placeholder="Rechercher un agent"  aria-label="search" aria-describedby="search">  
+              </div>
+            </form>
             </div>
        </div>
        <div class="row">

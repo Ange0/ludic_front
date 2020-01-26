@@ -93,6 +93,7 @@ export const MY_FORMAT: MatDateFormats = {
     MatFormFieldModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatInputModule,
     MatNativeDateModule,
     MatDialogModule
   ],

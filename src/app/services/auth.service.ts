@@ -6,6 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
+  /* url:string="http://ludic.wikeotel.com/index.php/auth/"; */
+  url:string=" http://localhost/w-stock-mini/index.php/auth/"
   //server:string="";
   //headers:HttpHeaders;
   constructor(private http:HttpClient) {
@@ -22,7 +24,7 @@ export class AuthService {
    }
   signIn(Pemail:string,Ppassword:string):Observable<any[]>
   {
-    return this.http.post<any[]>("http://localhost/w-stock-mini/index.php/auth/login",{agentemail:Pemail,agentpass:Ppassword});
+    return this.http.post<any[]>(this.url+"login",{agentemail:Pemail,agentpass:Ppassword});
   }
 
 }

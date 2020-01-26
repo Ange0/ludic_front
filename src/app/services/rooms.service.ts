@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class RoomsService {
   url:string=" http://localhost/w-stock-mini/index.php/room/";
+ /*  url:string="http://ludic.wikeotel.com/index.php/room/"; */
   constructor(private cookie:CookieService,private http:HttpClient) { }
 
 

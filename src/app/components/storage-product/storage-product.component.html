@@ -2,8 +2,110 @@
   <app-header-top></app-header-top>
   <app-header-bottom></app-header-bottom>
 </div>
-<p>
-  storage-product works!
-</p>
-<button mat-raised-button></button>
-<!-- <mat-icon>room</!--> 
+
+<!-- <button mat-raised-button></button> -->
+<!-- <mat-icon>Storage</!--> 
+
+  <div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+       <div class="content-wrapper">
+         <div class="row" style="margin-bottom: 20px;">
+         <!-- <div class="col-md-12">
+              <form [formGroup]="profileFormSearchStock">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="search">
+                      <i class="mdi mdi-magnify"></i>
+                    </span>
+                  </div>
+                   <input type="text" class="form-control" (keyup)="onSearchStock()" formControlName="searchStock" placeholder="Rechercher un Stock"  aria-label="search" aria-describedby="search">  
+                </div>
+              </form>
+          </div> -->
+         </div>
+         <div class="row">
+           <!-- <div>
+             <h2 style="text-align: center;">Chargement...</h2>
+             
+           </div> -->
+            <div class="col-lg-6 ">
+                <div class="card">
+             
+                  <!-- <div class="card-body">
+                    <app-loading-spinner  *ngIf="showSpinnerForAddStock"></app-loading-spinner>
+                    <div *ngIf="Stocks.length==0"><h2 style="text-align: center;">{{msgStock}}</h2></div> 
+                      <div *ngIf="Stocks.length!=0">
+                        <h4 class="card-title">Liste des Stocks</h4>
+                          <p class="card-description">
+                            Nombre des Stocks <code>: {{nbrStock}}</code>
+                          </p>
+                      </div>
+                    <ul class="list-group mt-4">
+                      <li class="list-group-item" *ngFor='let Stock of Stocks'>
+                        <app-Stock-item [rooms]="rooms" (sendRequestToDataForUpdate)="onUpdateStock($event)" (sendRequestToData)="onDeleteStock($event)" [Stock]="Stock" (sendRequestToDataForIn)="onInStock($event)" (sendRequestToDataForOut)="onOutStock($event)"></app-Stock-item>
+                      </li>
+                    </ul>
+                  </div> -->
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                      
+                      <h4 class="card-title"><i class="mdi mdi-account-multiple-plus  menu-icon icon-lg"></i> Stock</h4>
+                      <form class="forms-sample"  [formGroup]="profileFormStock" (ngSubmit)="onAddStock()">
+  
+                       <div class="row">
+                        <mat-form-field class="col-md-6">
+                          <mat-label  >Salle</mat-label>
+                          <mat-select style="color:grey" formControlName="roomStock" required>
+                            <mat-option *ngFor="let room of rooms " [value]="room.room_code">{{room.room_name}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+              
+                        <mat-form-field class="col-md-3">
+                          <input matInput required   formControlName="dateStock" [matDatepicker]="picker" placeholder="date de stock">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                       </div>
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                          <mat-form-field class="col-md-6">
+                            <mat-label  >Produit</mat-label>
+                            <mat-select style="color:grey" formControlName="codeProduct" required>
+                              <mat-option *ngFor="let product of products " [value]="product.prod_code">{{product.prod_name}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+  
+                          <mat-form-field class="col-md-3">
+                            <input  type="number"  min="1"  matInput class="form-control" formControlName="qteProduct" placeholder="Quantité">
+                         </mat-form-field>
+                         
+                         <button type="button"  mat-raised-button (click)="addProduct()"  color="primary">Ajouter</button>
+                        
+                        </div>
+                        <div class="row">
+                            <!-- liste des boissons -->
+                            <div class="col-lg-12">
+                                <div class="stretch-card">
+                                    <ul class="list-group mt-4">
+                                      <li *ngFor="let productLocal of listProdLocaux">{{productLocal.name}} | {{productLocal.qte}} </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <button  mat-primary-button class="btn btn-primary mr-2">Enregistrer</button> -->
+                        <button type="submit"  mat-raised-button  [disabled]="profileFormStock.invalid" color="primary">Enregistrer</button> &nbsp;
+                        <button type="reset" mat-raised-button  color="warn">Effacer</button>
+                      </form>
+                    </div>
+                  </div>
+            </div>
+         </div>
+      </div>
+   </div>
+  </div>
+
+  <button class="btn btn-primary">Ajouter</button>
